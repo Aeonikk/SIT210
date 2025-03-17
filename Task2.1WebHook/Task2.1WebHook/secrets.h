@@ -1,0 +1,5 @@
+#define SECRET_SSID "Optus_9DD6AD"
+#define SECRET_PASS "weedymeatsuNjEd"
+
+#define SECRET_CH_ID 2873898
+#define SECRET_WRITE_APIKEY "AATTBU7WTHHBOZPV"
