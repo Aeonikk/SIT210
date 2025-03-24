@@ -30,7 +30,7 @@ void loop() {
     Serial.print("Attempting to connect to SSID: ");
     Serial.println(SECRET_SSID);
     while(WiFi.status() != WL_CONNECTED){
-      WiFi.begin(ssid, pass);  // Connect to WPA/WPA2 network. Change this line if using open or WEP network
+      WiFi.begin(ssid, pass);  // Connect to WPA/WPA2 network
       Serial.print(".");
       delay(2000);     
     } 
