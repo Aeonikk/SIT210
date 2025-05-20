@@ -10,6 +10,10 @@ char ssid[] = SECRET_SSID;
 char pass[] = SECRET_PASS;
 WiFiClient client;
 
+//Example of secrets.h file
+//#define SECRET_SSID "WiFi Name"
+//#define SECRET_PASS "WiFi Password"
+
 //IFTTT trigger URL
 char   HOST_NAME[] = "maker.ifttt.com";
 String PATH_NAME   = "/trigger/light_activity/json/with/key/dCA6DO05Cyc0K9vC-auZcw";
@@ -19,7 +23,7 @@ float prevLight = 0;
 //Current light value
 float light = 0;
 //Required light
-float plantLight = 25000;
+float plantLight = 500;
 //Minutes spent in required light value
 float minInSun = 0;
 String status;
@@ -91,5 +95,5 @@ void loop() {
     minInSun++;
   }
   Serial.println(light);
-  delay(60000);
+  delay(5000);
 }
