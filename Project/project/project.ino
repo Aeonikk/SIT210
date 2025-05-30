@@ -1,7 +1,6 @@
 #include <Servo.h>
 #include <BH1750.h>
 #include <Wire.h>
-#include <ArduinoLowPower.h>
 
 //Component setup
 Servo myServo;
@@ -27,14 +26,14 @@ bool watering = false;
 
 //Variables relevant to curtain system
 float currentLight = 0.0;
-float dangerLight = 500;
+float dangerLight = 10000;
 bool curtainOpen = false;
 
 //Values for timing
 unsigned long lastLightCheck = 0;
 unsigned long lastMoistureCheck = 0;
-const unsigned long lightInterval = 5000;
-const unsigned long defaultMoistureInterval = 10000;
+const unsigned long lightInterval = 600000;
+const unsigned long defaultMoistureInterval = 900000;
 unsigned long moistureInterval = defaultMoistureInterval;
 unsigned long currentTime = 0;
 
@@ -70,7 +69,7 @@ void curtain(String change){
 
 void water(){
   digitalWrite(pumpPin, HIGH);
-  delay(1000);
+  delay(3000);
   digitalWrite(pumpPin, LOW);
 }
 
@@ -108,7 +107,7 @@ void loop() {
     //water the plant and reduce the time between checking moisture during watering cycle
     if (percentMoisture <= waterThreshold || watering){
       water();
-      moistureInterval = 5000;
+      moistureInterval = 300000;
     }
 
     //If we are in a watering cycle and the moisture is now at a good level, stop watering
@@ -118,6 +117,4 @@ void loop() {
       moistureInterval = defaultMoistureInterval;
     }
   }
-
-  LowPower.sleep(5000);
 }
